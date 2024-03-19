@@ -1,0 +1,41 @@
+kube-prometheus-stack:
+  prometheus:
+    server:
+      service:
+        type: NodePort
+        nodePort: 30090
+  alertmanager:
+    enabled: true
+    alertmanagerSpec:
+      service:
+        type: NodePort
+        nodePort: 30093
+  grafana:
+    adminPassword: Not@SecurePassw0rd
+    ldap:
+      enabled: true
+      config: |-
+        verbose_logging = true
+        [[servers]]
+        host = "openldap.ldap"
+        port = 389
+        use_ssl = false
+        start_tls = false
+        ssl_skip_verify = false
+        bind_dn = "cn=admin,dc=example,dc=org"
+        bind_password = 'Not@SecurePassw0rd'
+        search_filter = "(cn=%s)"
+        search_base_dns = ["dc=example,dc=org"]
+        [servers.attributes]
+        name = "givenName"
+        surname = "sn"
+        username = "cn"
+    persistence:
+      enabled: true
+      storageClassName: standard
+      size: 5Gi
+    grafana.ini:
+      auth.ldap:
+        enabled: true
+        allow_sign_up: true
+        config_file: /etc/grafana/ldap.toml

@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: nginx-virtualservice
+  namespace: istio-test
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - istio-system/ingressgateway # İstio ingress gateway'e trafik yönlendirilir
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: nginx-deployment.test-istio.svc.cluster.local # Deployment'in adı ve namespace'i
+        port:
+          number: 80

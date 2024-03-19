@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: python-app
+  name: python-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-app
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: python-app
+    spec:
+      containers:
+      - image: sicakyuz/custom-python-image
+        name: custom-python-image
+        command: ["sleep", "1800"]
+        resources: {}
+status: {}

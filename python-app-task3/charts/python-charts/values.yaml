@@ -1,0 +1,8 @@
+replicaCount: 1
+
+image:
+  repository: sicakyuz/custom-python-image
+  tag: latest
+  pullPolicy: IfNotPresent
+
+# Add additional configuration options as needed

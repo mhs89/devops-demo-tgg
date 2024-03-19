@@ -1,0 +1,67 @@
+pipeline {
+  agent {
+    kubernetes {
+      yaml """
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    docker-label: docker-label
+spec:
+  containers:
+  - name: docker
+    image: docker:latest
+    command:
+    - cat
+    tty: true
+    volumeMounts:
+    - mountPath: /var/run/docker.sock
+      name: docker-sock-volume
+  volumes:
+  - name: docker-sock-volume
+    hostPath:
+      path: /var/run/docker.sock
+"""
+    }
+  }
+  stages {
+    stage('Checkout Code') {
+      steps {
+        git branch: 'main', credentialsId: 'b9e78042-af07-41f8-b5e8-be4bd9f37cad', url: 'git@github.com:mhs89/Docker-Build.git'
+      }
+    }
+    stage('Build Docker Image') {
+      steps {
+        container('docker') {
+          script {
+            // Build Docker image and tag it
+            sh 'docker build -t sicakyuz/custom-python-image:latest -f Dockerfile .'
+          }
+        }
+      }
+    }
+    stage('Push Docker Image to Docker Hub') {
+      steps {
+        container('docker') {
+          script {
+            // Log in to Docker Hub
+            withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
+              sh "docker login -u ${DOCKERHUB_USERNAME} -p ${DOCKERHUB_PASSWORD}"
+            }
+            // Push the Docker image to Docker Hub
+            sh 'docker push sicakyuz/custom-python-image:latest'
+          }
+        }
+      }
+    }
+    stage('Run Tests') {
+      steps {
+        container('docker') {
+          script {
+            sh 'docker run sicakyuz/custom-python-image:latest'
+          }
+        }
+      }
+    }
+  }
+}

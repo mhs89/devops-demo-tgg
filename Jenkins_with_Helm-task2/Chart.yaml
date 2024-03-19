@@ -1,0 +1,8 @@
+apiVersion: v2
+name: my-jenkins-chart
+description: A Helm chart for Jenkins
+version: 0.1.0
+dependencies:
+  - name: jenkins
+    version: 4.12.1
+    repository: https://charts.jenkins.io

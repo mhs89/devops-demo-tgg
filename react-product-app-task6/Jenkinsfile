@@ -1,0 +1,90 @@
+pipeline {
+    agent {
+        kubernetes {
+            // Define the pod template for the Jenkins agent
+            yaml """
+                apiVersion: v1
+                kind: Pod
+                metadata:
+                  labels:
+                    jenkins: agent
+                spec:
+                  serviceAccountName: default
+                  containers:
+                  - name: kubectl
+                    image: sicakyuz/my-custom-kubectl:latest
+                    command:
+                    - sleep
+                    - infinity
+                  - name: docker
+                    image: docker:19.03.12
+                    command:
+                    - cat
+                    tty: true
+                    volumeMounts:
+                    - name: docker-socket
+                      mountPath: /var/run/docker.sock
+                  volumes:
+                  - name: docker-socket
+                    hostPath:
+                      path: /var/run/docker.sock
+            """
+        }
+    }
+    environment {
+        DOCKER_IMAGE_FE = 'sicakyuz/my-java-app-frontend:1.0'
+        DOCKER_IMAGE_BE = 'sicakyuz/my-java-app-backend:1.0'
+    }
+    stages {
+
+        stage("Checkout from SCM") {
+            steps {
+                container('docker') {
+                    git branch: 'main', credentialsId: 'b9e78042-af07-41f8-b5e8-be4bd9f37cad', url: 'git@github.com:mhs89/react-product-app.git'
+                }
+            }
+        }
+        stage('Build Docker Image FE') {
+            steps {
+                container('docker') {
+                    sh "cd frontend && docker build -t $DOCKER_IMAGE_FE ."
+                }
+            }
+        }
+
+        stage('Build Docker Image BE') {
+            steps {
+                container('docker') {
+                    sh 'pwd'
+                    sh "cd backend && docker build -t $DOCKER_IMAGE_BE ."
+                }
+            }
+        }
+
+        stage('Push to Docker Hub') {
+            steps {
+                container('docker') {
+                    // Login to Docker Hub
+                    withCredentials([usernamePassword(credentialsId: "docker-hub-credentials", passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+                        sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
+                    }
+
+                    // Push Docker image to Docker Hub
+                    sh "docker push $DOCKER_IMAGE_FE"
+
+                    sh "docker push $DOCKER_IMAGE_BE"
+                }
+            }
+        }
+
+        stage('Execute kubectl commands') {
+            steps {
+                container('kubectl') {
+                    // Run a simple command to check
+                    sh 'kubectl version --client'
+                    sh 'kubectl get pods'
+                }
+            }
+        }
+    }
+}

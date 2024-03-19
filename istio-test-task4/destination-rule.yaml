@@ -1,0 +1,10 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: nginx-destinationrule
+  namespace: istio-test
+spec:
+  host: nginx-deployment.test-istio.svc.cluster.local # Deployment'in adı ve namespace'i
+  trafficPolicy:
+    loadBalancer:
+      simple: ROUND_ROBIN # Load balancing stratejisi, diğer seçenekler LATEST, LEAST_CONN vb.

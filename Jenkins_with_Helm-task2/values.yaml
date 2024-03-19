@@ -1,0 +1,23 @@
+jenkins: 
+  controller:
+    serviceType: NodePort
+    nodePort: 30045 
+    installPlugins: 
+      - blueocean
+      - kubernetes
+      - git
+      - workflow-aggregator:596.v8c21c963d92d
+      - configuration-as-code         
+    adminUser: admin
+    admin:
+      existingSecret: "jenkins-credentials"
+      userKey: jenkins-admin-user
+      passwordKey: adminPassword
+  persistence: 
+    storageClass: "standard"
+    size: "5Gi"
+  # values.yaml
+
+
+
+
