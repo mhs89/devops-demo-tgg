@@ -149,5 +149,14 @@ Before setting up the CI/CD pipeline, ensure you have the following prerequisite
                   
 ``` 
 * Create an SSH key on the Linux VM and integrate it with the GitHub repository.
-* Integrate Docker Hub and Jenkins: From Jenkins GUI --> **Managed Jenkins** --> **Credentials**
+* Integrate Docker Hub and Jenkins: From **Jenkins GUI** --> **Managed Jenkins** --> **Credentials**
 * Create a test user from LDAP GUI to test Grafana GUI authentication and authorization through LDAP.
+## Installed repositories
+$ helm repo list
+NAME                    URL                                                
+jenkins                 https://charts.jenkins.io                          
+bitnami                 https://charts.bitnami.com/bitnami                 
+istio                   https://istio-release.storage.googleapis.com/charts
+helm-openldap           https://jp-gouin.github.io/helm-openldap/          
+stable                  https://charts.helm.sh/stable                      
+prometheus-community    https://prometheus-community.github.io/helm-charts
