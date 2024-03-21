@@ -23,7 +23,9 @@ This repository contains the configuration and setup for a comprehensive CI/CD p
 **Jenkins Secrets:** 
 * YAML files for Jenkins secrets.
 ```bash
-  $  ls -la /devops-demo/jenkins-secrets
+$  ls -la /devops-demo/jenkins-secrets
+--- 170 Mar 17 23:58 secret-jenkins_ns.yaml
+---- 149 Mar 17 23:58 secret.yaml
 ```
 **Python-app-task3:1:** The folder contains;
 * Python application is developed for basic mathematical operations.
@@ -54,11 +56,31 @@ $ ls -la /devops-demo/react-product-app-task6
 ```
 
 **Kube-prometheus-stack-task5-7:**
-Deploy kube-prometheus-stack Helm repo and customize the configuration files inside the **values.yaml** for service type change to NodePort.
+Deploy kube-prometheus-stack helm repo and customize the configuration files inside the **values.yaml** for service type change to NodePort.
 Configure LDAP search parameters and other configs inside the Grafana container for authentication and authorization testing for Grafana application through OpenLDAP service.
 
+Install the applications and services in **grafana-prometheus** namespace
+
 ```bash
-$ ls -la /devops-demo/kube-prometheus-stack-task5-7
+$ k get deployments.apps -n grafana-prometheus 
+NAME                                  READY   UP-TO-DATE   AVAILABLE   AGE
+my-prometheus-grafana                 1/1     1            1           3d4h
+my-prometheus-kube-prometh-operator   1/1     1            1           3d4h
+my-prometheus-kube-state-metrics      1/1     1            1           3d4h
+
+$ helm ls -n grafana-prometheus 
+NAME            NAMESPACE               REVISION        UPDATED                                 STATUS          CHART                   APP VERSION
+my-prometheus   grafana-prometheus      1               2024-03-18 12:06:13.787233037 +0300 +03 deployed        my-prometheus-0.1.0     0.40.0     
+
+$ k get pods -n grafana-prometheus
+NAME                                                     READY   STATUS    RESTARTS       AGE
+alertmanager-my-prometheus-kube-prometh-alertmanager-0   2/2     Running   10 (15h ago)   3d4h
+my-prometheus-grafana-c9978df9c-w4lng                    3/3     Running   15 (15h ago)   3d4h
+my-prometheus-kube-prometh-operator-65df8b6964-gnptk     1/1     Running   5 (15h ago)    3d4h
+my-prometheus-kube-state-metrics-64d8d8f6b9-26dth        1/1     Running   7 (15h ago)    3d4h
+my-prometheus-prometheus-node-exporter-c6gql             1/1     Running   5 (15h ago)    3d4h
+prometheus-my-prometheus-kube-prometh-prometheus-0       2/2     Running   10 (15h ago)   3d4h
+
 ```
 **Istio-test-task4:**
 Deploy the application with YAML files and verify that the sidecar Istio container is injected.
