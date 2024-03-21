@@ -4,6 +4,6 @@ This repository contains the configuration and setup for a comprehensive CI/CD p
 
 ## Components
 **Jenkins_with_Helm_task2:**
-Customized Jenkins Helm files and installation scripts.
-Install Jenkins tool in the Jenkins namespace.
-Create secrets for Jenkins using the jenkins-secrets folder and apply the YAML files.
+* Customized Jenkins Helm files and installation scripts.
+* Install Jenkins tool in the Jenkins namespace.
+* Create secrets for Jenkins using the jenkins-secrets folder and apply the YAML files.
