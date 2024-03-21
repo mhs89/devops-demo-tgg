@@ -64,8 +64,20 @@ Deploy the application with YAML files and verify that the sidecar Istio contain
 
 ```bash
 $ ls -la /devops-demo/istio-test-task4
-```
+....Mar 19 10:41 config-map-nginx.yaml
+....Mar 19 10:41 deploy-istio.yaml
+... Mar 19 10:41 destination-rule.yaml
+... Mar 19 10:41 virtual-service.yaml
 
+```
+**Verify that istio sidecar pods are injected to each pods ;**
+```bash
+$ k get pods -n istio-test 
+NAME                              READY   STATUS    RESTARTS       AGE
+nginx-replicas-845567b45d-ddfjq   2/2     Running   10 (15h ago)   3d
+nginx-replicas-845567b45d-r2hd4   2/2     Running   10 (15h ago)   3d
+nginx-replicas-845567b45d-xh59c   2/2     Running   10 (15h ago)   3d
+```
 ## Kubernetes Configuration
 * ClusterRole, ClusterRoleBinding, and Service account permissions are expanded for all resources in the cluster.
 * Jenkins uses the default service account with permissions for get, list, write, and delete operations.
