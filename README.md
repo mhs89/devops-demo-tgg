@@ -139,7 +139,8 @@ my-release-ltb-passwd     ClusterIP   10.109.99.94     <none>        80/TCP     
 my-release-phpldapadmin   NodePort    10.104.240.191   <none>        80:30370/TCP      3d2h
 ```
 ## Istio Installation
-Install Istio and select the demo mode for all features. Follow up on the Istio official documentation:
+Install Istio and select the demo mode for all features. 
+Follow up on the Istio official documentation: **https://istio.io/latest/docs/setup/getting-started/**
 ```bash
 https://istio.io/latest/docs/setup/getting-started/
 $ istioctl install --set profile=demo -y
