@@ -30,9 +30,9 @@ drwxr-xr-x 9 sicakyuz sicakyuz 4096 Mar 21 13:01 ..
 -rw-rw-r-- 1 sicakyuz sicakyuz  149 Mar 17 23:58 secret.yaml
 
 
-
 python-app-task3 : Python application is for basic mathematical opeations. Created pyhton files, Dockerfile, 
 Helm charts templates and scipt files .
+
 In Jenkins pipeline, use docker container as an agent to build the python image and push the Dockerhub repository.
 Deploy the application through Jenkins pipeline script with using the alpine/helm container to be able to install helm charts.
 
@@ -95,7 +95,8 @@ drwxr-xr-x 2 sicakyuz sicakyuz 4096 Mar 19 10:37 charts
 -rwxr-xr-x 1 sicakyuz sicakyuz  423 Mar 19 10:37 install.sh
 -rwxr-xr-x 1 sicakyuz sicakyuz  999 Mar 19 10:37 values.yaml
 
-Deploy the applications on grafana-prometheus namespace.
+Deploy the applications on grafana-prometheus namespace. 
+Open the LDAP Gui and create a test user for Grafana authentication.
 
 sicakyuz@sicakyuz-virtualbox:/devops-demo/kube-prometheus-stack-task5-7$ helm ls -n grafana-prometheus 
 NAME            NAMESPACE               REVISION        UPDATED                                 STATUS          CHART                   APP VERSION
@@ -117,7 +118,8 @@ $ helm install my-release helm-openldap/openldap-stack-ha
 Ldap deployments and services: 
 sicakyuz@sicakyuz-virtualbox:/devops-demo/kube-prometheus-stack-task5-7$ helm ls -n ldap 
 NAME            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                   APP VERSION
-my-release      ldap            1               2024-03-18 12:38:07.647178938 +0300 +03 deployed        openldap-stack-ha-4.2.2 2.6.6      
+my-release      ldap            1               2024-03-18 12:38:07.647178938 +0300 +03 deployed        openldap-stack-ha-4.2.2 2.6.6    
+
 sicakyuz@sicakyuz-virtualbox:/devops-demo/kube-prometheus-stack-task5-7$ k get deployments.apps -n ldap 
 NAME                      READY   UP-TO-DATE   AVAILABLE   AGE
 my-release-ltb-passwd     1/1     1            1           3d2h
@@ -178,16 +180,16 @@ Before setting up the CI/CD pipeline, ensure you have the following prerequisite
 - Helm installed on your local machine
 - Docker installed on your local machine
 - CI/CD tool configured (e.g., Jenkins, GitLab CI/CD, GitHub Actions)
--  Create following namespace in kubernetes enviorenment.
-  default                Active   3d16h
-  grafana-prometheus     Active   3d2h
-  istio-system           Active   3d
-  istio-test             Active   3d
-  jenkins                Active   3d15
-  ldap                   Active   3d2h
-  react                  Active   2d1h
+- Create following namespace in kubernetes enviorenment.
+   default                Active   3d16h
+   grafana-prometheus     Active   3d2h
+   istio-system           Active   3d
+   istio-test             Active   3d
+   jenkins                Active   3d15
+   ldap                   Active   3d2h
+   react                  Active   2d1h
   
-Create ssh key on Linux VM and integrate with GitHub repository .
-Integrate Docker Hub and Jenkins : From Jenkins Gui -->  Managed Jenkins -- > Credentials
+- Create ssh key on Linux VM and integrate with GitHub repository .
+- Integrate Docker Hub and Jenkins : From Jenkins Gui -->  Managed Jenkins -- > Credentials
 
   
