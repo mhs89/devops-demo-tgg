@@ -191,5 +191,6 @@ Before setting up the CI/CD pipeline, ensure you have the following prerequisite
   
 - Create ssh key on Linux VM and integrate with GitHub repository .
 - Integrate Docker Hub and Jenkins : From Jenkins Gui -->  Managed Jenkins -- > Credentials
+- Create test user from LDAP Gui to test the Grafana Gui authentication and autherization 
 
   
