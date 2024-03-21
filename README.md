@@ -1,29 +1,45 @@
 # Microservices CI/CD Pipeline
 ## Overview
-This repository contains the configuration and setup for a comprehensive CI/CD pipeline for managing microservices deployments using Kubernetes, Jenkins, Helm, Istio, GitHub, and Docker Hub integration.
+This repository contains the configuration and setup for a comprehensive CI/CD pipeline for managing microservices deployments using Kubernetes, Jenkins, Helm, Istio, GitHub, and Docker Hub integration. In this demo, three different microservice application will be deployed for different purposes and configuration files of applications are placed in each indivual folders.
 
 ## Components
-**Jenkins_with_Helm_task2:**
+**Jenkins_with_Helm_task2:** The folder contains;
 * Customized Jenkins Helm files and installation scripts.
-* Install Jenkins tool in the Jenkins namespace.
+* Install Jenkins tool in the **jenkins** namespace.
 * Create secrets for Jenkins using the **jenkins-secrets** folder and apply the YAML files.
+  
 ```bash
   $ ls -la /devops-demo/Jenkins_with_Helm-task2
-```
+    -rw-r--r-- 1 root     root       217 Mar 19 10:38 Chart.lock
+     drwxr-xr-x 3 root     root      4096 Mar 19 10:38 charts
+    -rw-r--r-- 1 root     root       184 Mar 19 10:38 Chart.yaml
+    -rwxr-xr-x 1 root     root       409 Mar 19 10:38 diff.sh
+    -rwxr-xr-x 1 root     root       554 Mar 19 10:38 dry_run.sh
+    -rw-r--r-- 1 root     root     19672 Mar 19 10:38 dry_run.yaml
+    -rwxr-xr-x 1 root     root       414 Mar 19 10:38 install.sh
+    -rw-r--r-- 1 root     root       450 Mar 19 10:38 values.yaml
+  ```
 
-**Jenkins Secrets**
+**Jenkins Secrets:** 
 * YAML files for Jenkins secrets.
 ```bash
   $  ls -la /devops-demo/jenkins-secrets
 ```
-**Python-app-task3:1:**
-* Python application for basic mathematical operations.
+**Python-app-task3:1:** The folder containsİ 
+* Python application is developed for basic mathematical operations.
 * Includes Python files, Dockerfile, Helm chart templates, and script files.
 * Jenkins pipeline uses a Docker container as an agent to build the Python image and push it to Docker Hub.
 * Deployment of the application through Jenkins pipeline script using the alpine/helm container to install Helm charts.
-  
+
+  Helm charts are inside the "**charts**" subfolder
 ```bash
 $ ls -la /devops-demo/python-app-task3
+  drwxr-xr-x 3 sicakyuz sicakyuz 4096 Mar 19 10:32 charts
+  -rw-r--r-- 1 sicakyuz sicakyuz  375 Mar 19 10:32 Dockerfile
+  -rw-r--r-- 1 sicakyuz sicakyuz 2484 Mar 21 12:49 Jenkinsfile
+  -rw-r--r-- 1 sicakyuz sicakyuz   96 Mar 19 10:32 main.py
+  -rw-r--r-- 1 sicakyuz sicakyuz  377 Mar 19 10:32 myapp-deployment.yaml
+  -rw-r--r-- 1 sicakyuz sicakyuz  476 Mar 19 10:32 python-depl.yaml
 ```
 **React-product-app-task6:**
 * Simple product listing application using React, Spring Boot, and MySQL.
