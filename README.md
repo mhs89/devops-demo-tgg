@@ -25,7 +25,7 @@ This repository contains the configuration and setup for a comprehensive CI/CD p
 ```bash
   $  ls -la /devops-demo/jenkins-secrets
 ```
-**Python-app-task3:1:** The folder containsİ 
+**Python-app-task3:1:** The folder contains;
 * Python application is developed for basic mathematical operations.
 * Includes Python files, Dockerfile, Helm chart templates, and script files.
 * Jenkins pipeline uses a Docker container as an agent to build the Python image and push it to Docker Hub.
