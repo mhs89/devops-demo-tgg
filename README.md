@@ -139,13 +139,15 @@ Before setting up the CI/CD pipeline, ensure you have the following prerequisite
 * Docker installed on your local machine.
 * CI/CD tool configured (Prometheus Stack, Jenkins, Helm).
 * Create the required namespaces in the Kubernetes environment.
-      **grafana-prometheus**
-      **istio-system**      
-      **istio-test**        
-      **jenkins**           
-      **ldap**              
-      **react**             
-   
+```bash
+  $ k get namespaces
+      grafana-prometheus
+      istio-system   
+      istio-test       
+      jenkins           
+      ldap             
+      react             
+``` 
 * Create an SSH key on the Linux VM and integrate it with the GitHub repository.
 * Integrate Docker Hub and Jenkins: From Jenkins GUI --> **Managed Jenkins** --> **Credentials**
 * Create a test user from LDAP GUI to test Grafana GUI authentication and authorization through LDAP.
