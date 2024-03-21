@@ -4,7 +4,11 @@ This repository contains the configuration and setup for a comprehensive CI/CD p
 In this demo, three different microservice application will be deployed for different purposes and configuration files of applications are placed in each indivual folders.
 
 
-Jenkins_with_Helm_task2 : Contains the customized Jenkins Helm files and installation scripts.
+Jenkins_with_Helm_task2 : Contains the customized Jenkins Helm files and installation scripts. 
+
+![image](https://github.com/mhs89/devops-demo-tgg/assets/101714270/75f4b7f2-5b6f-4b56-b67f-23b5dc0b32cd)
+
+
 python-app-task3 : Contains 
 
 
