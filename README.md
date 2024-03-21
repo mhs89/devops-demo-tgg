@@ -1,7 +1,8 @@
 # Microservices CI/CD Pipeline using the Kubernetes, Istio, Jenkins , Helm , OpenLdap, Kube Prometheus Stack ( Grafana, Prometheus, Alert Manager) and Docker Hub
 
-This repository contains the configuration and setup for a comprehensive CI/CD pipeline for managing microservices 
-deployments using Kubernetes,Jenkins,Helm Package Manager, Istio, GitHub and Docker Hub integration. 
+This repository contains the configuration and setup for a comprehensive 
+CI/CD pipeline for managing microservices deployments using Kubernetes,Jenkins,
+Helm Package Manager, Istio, GitHub and Docker Hub integration. 
 
 In this demo, three different microservice application will be deployed for different purposes and 
 configuration files of applications are placed in each indivual folders.
