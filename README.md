@@ -139,6 +139,7 @@ Before setting up the CI/CD pipeline, ensure you have the following prerequisite
 * Docker installed on your local machine.
 * CI/CD tool configured (Prometheus Stack, Jenkins, Helm).
 * Create the required namespaces in the Kubernetes environment.
+
       **grafana-prometheus** 
       **istio-system**      
       **istio-test**        
