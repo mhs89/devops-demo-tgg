@@ -27,7 +27,7 @@ $  ls -la /devops-demo/jenkins-secrets
 --- 170 Mar 17 23:58 secret-jenkins_ns.yaml
 ---- 149 Mar 17 23:58 secret.yaml
 ```
-**Python-app-task3:1:** The folder contains;
+**Python-app-task3:** The folder contains;
 * Python application is developed for basic mathematical operations.
 * Includes Python files, Dockerfile, Helm chart templates, and script files.
 * Jenkins pipeline uses a Docker container as an agent to build the Python image and push it to Docker Hub.
