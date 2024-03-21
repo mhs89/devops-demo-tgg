@@ -24,6 +24,11 @@ pipeline {
                     volumeMounts:
                     - name: docker-socket
                       mountPath: /var/run/docker.sock
+                  - name: helm
+                    image: alpine/helm:latest
+                    command:
+                    - sleep
+                    - infinity
                   volumes:
                   - name: docker-socket
                     hostPath:
@@ -77,12 +82,15 @@ pipeline {
             }
         }
 
-        stage('Execute kubectl commands') {
+        stage('Deploy Kubernetes Resources') {
             steps {
                 container('kubectl') {
                     // Run a simple command to check
                     sh 'kubectl version --client'
                     sh 'kubectl get pods'
+                    // Önce YAML dosyalarını Jenkins agent'ın çalıştığı dizine kopyalayın ve ardından uygulayın
+                    sh "cp -r deployment-services-yamls/* ."
+                    sh "kubectl apply -f ."
                 }
             }
         }
