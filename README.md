@@ -42,11 +42,11 @@ $ ls -la /devops-demo/python-app-task3
   -rw-r--r-- 1 sicakyuz sicakyuz  476 Mar 19 10:32 python-depl.yaml
 ```
 **React-product-app-task6:**
-* Simple product listing application using React, Spring Boot, and MySQL.
-* GitHub repository: thearaseng/react-product-app.
+* Simple product listing application that is using React for frontend, Spring Boot as backend, and MySQL database
+* **GitHub repository:** **thearaseng/react-product-app**.
 * Building the application through Jenkins, selecting source code from GitHub, uploading the built container to Docker Hub, and deploying the application with Kubernetes manifest files inside the Jenkins job.
-* Create a custom Alpine container with kubectl utility, push it to Docker Hub, and use that image in the deployment stage.
-* Use Kubernetes YAML manifest files in the deployment stage inside the Jenkinsfile pipeline script.
+* Create a custom alpine container with kubectl utility, push it to Docker Hub, and use that image in the deployment stage of Jenkins pipeline.
+* Use Kubernetes YAML manifest files in the deployment stage inside the Jenkinsfile pipeline's script.
   
 ```bash  
 $ ls -la /devops-demo/react-product-app-task6
@@ -72,11 +72,18 @@ $ ls -la /devops-demo/istio-test-task4
   
 ```bash
 $ k describe clusterrolebindings.rbac.authorization.k8s.io -n jenkins jenkins-cluster-role-binding
-$ k describe clusterrole -n jenkins jenkins-cluster-role 
+$ k describe clusterrole -n jenkins jenkins-cluster-role
+   Name:         jenkins-cluster-role
+  Labels:       <none>
+  Annotations:  <none>
+  PolicyRule:
+    Resources  Non-Resource URLs  Resource Names  Verbs
+    ---------  -----------------  --------------  -----
+    *.*        []                 []              [get list watch create update delete]
 ```
 
 ## LDAP Configuration
-* Installed OpenLDAP with a public Helm chart without customization in the LDAP namespace.
+* Installed OpenLDAP with a public Helm chart without customization in the **ldap** namespace.
 * To install the chart with the release name my-release:
 ```bash
 $ helm repo add helm-openldap https://jp-gouin.github.io/helm-openldap/
@@ -86,7 +93,15 @@ LDAP Deployments and Services
 ```bash
 $ helm ls -n ldap
 $ k get deployments.apps -n ldap
+NAME                      READY   UP-TO-DATE   AVAILABLE   AGE
+my-release-ltb-passwd     1/1     1            1           3d2h
+my-release-phpldapadmin   1/1     1            1           3d2h
 $ k get svc -n ldap
+NAME                      TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)           AGE
+my-release                ClusterIP   10.103.36.115    <none>        389/TCP,636/TCP   3d2h
+my-release-headless       ClusterIP   None             <none>        389/TCP           3d2h
+my-release-ltb-passwd     ClusterIP   10.109.99.94     <none>        80/TCP            3d2h
+my-release-phpldapadmin   NodePort    10.104.240.191   <none>        80:30370/TCP      3d2h
 ```
 ## Istio Installation
 Install Istio and select the demo mode for all features. Follow up on the Istio official documentation:
@@ -112,12 +127,12 @@ Before setting up the CI/CD pipeline, ensure you have the following prerequisite
 * Docker installed on your local machine.
 * CI/CD tool configured (Prometheus Stack, Jenkins, Helm).
 * Create the required namespaces in the Kubernetes environment.
-      grafana-prometheus 
-      istio-system      
-      istio-test        
-      jenkins           
-      ldap              
-      react             
+      **grafana-prometheus** 
+      **istio-system**      
+      **istio-test**        
+      **jenkins**           
+      **ldap**              
+      **react**             
    
 * Create an SSH key on the Linux VM and integrate it with the GitHub repository.
 * Integrate Docker Hub and Jenkins: From Jenkins GUI --> **Managed Jenkins** --> **Credentials**
