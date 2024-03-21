@@ -33,6 +33,3 @@ react Active 2d1h
 Create an SSH key on Linux VM and integrate it with the GitHub repository.
 Integrate Docker Hub and Jenkins: From Jenkins GUI --> Managed Jenkins --> Credentials.
 Create a test user from LDAP GUI to test the Grafana GUI authentication and authorization.
-Detailed Project Descriptions
-Jenkins_with_Helm_task2
-Contains the customized Jenkins Helm files and installation scripts. Install the Jenkins tool in the Jenkins namespace. Create the secrets for Jenkins using the jenkins-secrets folder and apply the YAML files.
