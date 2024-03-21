@@ -62,3 +62,47 @@ $ k describe clusterrole -n jenkins jenkins-cluster-role
 ## LDAP Configuration
 * Installed OpenLDAP with a public Helm chart without customization in the LDAP namespace.
 * To install the chart with the release name my-release:
+```bash
+$ helm repo add helm-openldap https://jp-gouin.github.io/helm-openldap/
+$ helm install my-release helm-openldap/openldap-stack-ha
+```
+LDAP Deployments and Services
+```bash
+$ helm ls -n ldap
+$ k get deployments.apps -n ldap
+$ k get svc -n ldap
+```
+## Istio Installation
+Install Istio and select the demo mode for all features. Follow up on the Istio official documentation:
+https://istio.io/latest/docs/setup/getting-started/
+
+## CI/CD Pipeline Features
+* Automated builds, tests, and deployments.
+* Kubernetes cluster setup and configuration.
+* Jenkins setup with customized Helm chart and integrations.
+* Istio integration for service mesh functionalities.
+* Helm charts for managing Kubernetes application deployments.
+* Deployment of open-source monitoring solutions (LDAP) using Helm for authentication and authorization tests.
+* GitHub integration for source code management and CI/CD pipeline triggers.
+* Docker Hub integration for Docker image usage.
+* Monitoring and logging solutions for observability with kube Prometheus stack (Grafana, Prometheus, Alert Manager) on Kubernetes cluster.
+
+## Prerequisites
+Before setting up the CI/CD pipeline, ensure you have the following prerequisites installed and configured:
+
+* Kubernetes cluster (e.g., Minikube, GKE, EKS).
+* Istio installed and configured on the Kubernetes cluster.
+* Helm installed on your local machine.
+* Docker installed on your local machine.
+* CI/CD tool configured (Prometheus Stack, Jenkins, Helm).
+* Create the required namespaces in the Kubernetes environment.
+      grafana-prometheus 
+      istio-system      
+      istio-test        
+      jenkins           
+      ldap              
+      react             
+   
+* Create an SSH key on the Linux VM and integrate it with the GitHub repository.
+* Integrate Docker Hub and Jenkins: From Jenkins GUI --> **Managed Jenkins** --> **Credentials**
+* Create a test user from LDAP GUI to test Grafana GUI authentication and authorization through LDAP.
