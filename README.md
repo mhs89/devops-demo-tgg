@@ -178,8 +178,7 @@ Before setting up the CI/CD pipeline, ensure you have the following prerequisite
 - Helm installed on your local machine
 - Docker installed on your local machine
 - CI/CD tool configured (e.g., Jenkins, GitLab CI/CD, GitHub Actions)
-
-  Create following namespace in kubernetes enviorenment.
+-  Create following namespace in kubernetes enviorenment.
   default                Active   3d16h
   grafana-prometheus     Active   3d2h
   istio-system           Active   3d
@@ -188,8 +187,7 @@ Before setting up the CI/CD pipeline, ensure you have the following prerequisite
   ldap                   Active   3d2h
   react                  Active   2d1h
   
-  Create ssh key on Linux VM and integrate with GitHub repository .
-
-  Integrate Docker Hub and Jenkins : From Jenkins Gui -->  Managed Jenkins -- > Credentials
+Create ssh key on Linux VM and integrate with GitHub repository .
+Integrate Docker Hub and Jenkins : From Jenkins Gui -->  Managed Jenkins -- > Credentials
 
   
