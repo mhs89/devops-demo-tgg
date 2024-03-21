@@ -47,6 +47,7 @@ $ ls -la /devops-demo/python-app-task3
 * Building the application through Jenkins, selecting source code from GitHub, uploading the built container to Docker Hub, and deploying the application with Kubernetes manifest files inside the Jenkins job.
 * Create a custom alpine container with kubectl utility, push it to Docker Hub, and use that image in the deployment stage of Jenkins pipeline.
 * Use Kubernetes YAML manifest files in the deployment stage inside the Jenkinsfile pipeline's script.
+* The application will be deployed in **jenkins** namespace
   
 ```bash  
 $ ls -la /devops-demo/react-product-app-task6
@@ -142,11 +143,10 @@ Before setting up the CI/CD pipeline, ensure you have the following prerequisite
 ```bash
   $ k get namespaces
       grafana-prometheus
-      istio-system   
       istio-test       
       jenkins           
       ldap             
-      react             
+                  
 ``` 
 * Create an SSH key on the Linux VM and integrate it with the GitHub repository.
 * Integrate Docker Hub and Jenkins: From Jenkins GUI --> **Managed Jenkins** --> **Credentials**
