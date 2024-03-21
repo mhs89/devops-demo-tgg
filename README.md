@@ -155,10 +155,8 @@ Before setting up the CI/CD pipeline, ensure you have the following prerequisite
 ```bash
 $ helm repo list
 NAME                    URL                                                
-jenkins                 https://charts.jenkins.io                          
-bitnami                 https://charts.bitnami.com/bitnami                 
+jenkins                 https://charts.jenkins.io                                        
 istio                   https://istio-release.storage.googleapis.com/charts
-helm-openldap           https://jp-gouin.github.io/helm-openldap/          
-stable                  https://charts.helm.sh/stable                      
+helm-openldap           https://jp-gouin.github.io/helm-openldap/                               
 prometheus-community    https://prometheus-community.github.io/helm-charts
 ``` 
