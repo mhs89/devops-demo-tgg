@@ -1,7 +1,13 @@
-# Microservices CI/CD Pipeline with Kubernetes, Istio, and Helm
+# Microservices CI/CD Pipeline using the Kubernetes, Istio, Jenkins , Helm , OpenLdap, Kube Prometheus Stack ( Grafana, Prometheus, Alert Manager) and Docker Hub
 
-This repository contains the configuration and setup for a comprehensive CI/CD pipeline for managing microservices deployments using Kubernetes,Jenkins , Helm and GitHub integration. 
-There are two application inside the "python-app-task3" and "react-product-app-task6" folder and all required files packaged inside of them.
+This repository contains the configuration and setup for a comprehensive CI/CD pipeline for managing microservices deployments using Kubernetes,Jenkins,Helm Package Manager, Istio, GitHub and Docker Hub integration. 
+In this demo, three different microservice application will be deployed for different purposes and configuration files of applications are placed in each indivual folders.
+
+
+Jenkins_with_Helm_task2 : Contains the customized Jenkins Helm files and installation scripts.
+python-app-task3 : Contains 
+
+
 
 ## Overview
 
@@ -15,9 +21,10 @@ It leverages various tools and technologies to streamline the development lifecy
 - Jenkins setup with customized Helm chart and integrations
 - Istio integration for service mesh functionalities
 - Helm charts for managing Kubernetes application deployments
-- Deployment of open-source monitoring solutions(LDAP)  using Helm and Kubernetes operators
+- Deployment of open-source monitoring solutions(LDAP)  using Helm for authentication and autherization tests.
 - GitHub integration for source code management and CI/CD pipeline triggers
-- Monitoring and logging solutions for observability with kube prometheus stack (Grafana, Prometheus, Kibana)
+- Docker Hub integration for docker image usage
+- Monitoring and logging solutions for observability with kube prometheus stack (Grafana, Prometheus, Alert Manager) on kubernetes cluster.
 
 ## Prerequisites
 
