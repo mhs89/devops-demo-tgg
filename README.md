@@ -118,8 +118,15 @@ my-release-phpldapadmin   NodePort    10.104.240.191   <none>        80:30370/TC
 ```
 ## Istio Installation
 Install Istio and select the demo mode for all features. Follow up on the Istio official documentation:
+```bash
 https://istio.io/latest/docs/setup/getting-started/
-
+$ istioctl install --set profile=demo -y
+✔ Istio core installed
+✔ Istiod installed
+✔ Egress gateways installed
+✔ Ingress gateways installed
+✔ Installation complete
+```
 ## CI/CD Pipeline Features
 * Automated builds, tests, and deployments.
 * Kubernetes cluster setup and configuration.
